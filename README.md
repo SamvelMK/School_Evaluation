@@ -18,9 +18,9 @@ TBA
 
 ## Authors
 
-* **Samvel Mkhitaryan, MPH, MS** - *Principal Investigator* - [PurpleBooth](https://github.com/SamvelMK)
+* **Samvel Mkhitaryan, MPH, MS** - *Principal Investigator* - [GitHub](https://github.com/SamvelMK)
 * **Anush Alexanyan, MA** - *National expert*
-* **Contracting Party** - *UNFPA Armenia CO* - [PurpleBooth](https://armenia.unfpa.org/)
+* **Contracting Party** - *UNFPA Armenia CO* - [UNFPA Armenia](https://armenia.unfpa.org/)
 
 ## License
 
