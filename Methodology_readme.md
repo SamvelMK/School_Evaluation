@@ -24,6 +24,7 @@ Summative evaluation: To assess the effectiveness of the e-learning module we wi
 Table 1: Within-subject experiment with pre-post measurements
 
 |                   |	Pre-test |	Treatment |	Post-test  |
+| ----------        |:----------:| :---------:|  ---------:|
 |Random selection   |	O        |   	X     |	    O      |
 
 Before the commencement of the intervention, all teachers responsible for the implementation of the healthy lifestyle curriculum at the selected schools will be invited for a one day workshop. During the workshop, the program staff (UNFPA Program Coordinator and one of the designated national consultants) will familiarize the teachers with the e-learning module and the evaluation study. After attending the workshop the teachers will assign the e-learning module in their respective schools.
@@ -51,15 +52,15 @@ At the first stage, we randomly selected three of 11 provinces (including the ca
 
 Table 2: Final sample of communities and schools 
 
-| Capital/Province  |	Communities |	Number of schools|
-| ----------        |:----------:   | ---------------:   |
-|Shirak             |	5           |   	30           |
-| ----------        |:----------:   | ---------------:   |
-| Armavir	        |    30	        |       33           |
-| ----------        |:----------:   | ---------------:   |   
-|Syuniq	            |    30	        |       37           |
-| ----------        |:----------:   | ---------------:   |
-|   Total	        |    65	        |       100          |
+| Capital/Province  |Communities    | Number of schools |
+| ----------        |:----------:   | :---------:       |
+|Shirak             |	5           |   	30          |
+| ----------        |:----------:   | :---------:       |
+| Armavir	        |    30	        |       33          |
+| ----------        |:----------:   | :---------:       |
+|Syuniq	            |    30	        |       37          |
+| ----------        |:----------:   | :---------:       |
+|   Total	        |    65	        |       100         |
 
 ###	Limitations of the study 
 In the present section we discuss the potential limitations pertaining to the research design we deployed and the strategies for mitigating its effects. We discuss the limitations as threats to internal and external validity. Annex 2 (not shown) presents a summary of threats to external and internal validity pertinent to this study. 
