@@ -18,7 +18,6 @@ TBA
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 * **Samvel Mkhitaryan, MPH, MS** - *Principal Investigator* - [PurpleBooth](https://github.com/SamvelMK)
 * **Anush Alexanyan, MA** - *National expert*
 * **Contracting Party** - *UNFPA Armenia CO* - [PurpleBooth](https://armenia.unfpa.org/)
