@@ -22,8 +22,8 @@ Formative evaluation: To reveal the users’ experiences with the e-learning mod
 Summative evaluation: To assess the effectiveness of the e-learning module we will conduct a within-subject experiment with pre-post measurements (Table 1). Each student in the selected schools will be administered a pre-test questionnaire prior to completing the online module and will be followed up with a post-test questionnaire. In total, we will have four groups of students in each school, namely those in the grades 8, 9, 10, and 11. The pre and post-tests are identical in their content and will be administered online as part of the e-learning program. The students will have two weeks to complete the e-learning module.
 
 Table 1: Within-subject experiment with pre-post measurements
+
 |                   |	Pre-test |	Treatment |	Post-test  |
-| ----------        |:----------:| :---------:|  ---------:|
 |Random selection   |	O        |   	X     |	    O      |
 
 Before the commencement of the intervention, all teachers responsible for the implementation of the healthy lifestyle curriculum at the selected schools will be invited for a one day workshop. During the workshop, the program staff (UNFPA Program Coordinator and one of the designated national consultants) will familiarize the teachers with the e-learning module and the evaluation study. After attending the workshop the teachers will assign the e-learning module in their respective schools.
