@@ -8,7 +8,7 @@ from private import config
 
 class etl:
 
-        # This class includes three methods that allows connecting to SQL database, implement queries and data tranformation.
+        # This class includes three methods that allow connecting to SQL database, implement queries and data tranformation.
         # The query method requires one argument which is a string of SQL queries. The method implements
         # the query method returns the quried tables as pandas dataframe.
         # Long_wide method selects the specified columns in the dataframe and transforms it from long to wide format by assigning column
@@ -16,10 +16,13 @@ class etl:
         # based on the question names based on tests_id column in the database and then merges the table with the rest of the data in the initial
         # dataframe. The df.long_wide() method should be followed by .col_rename() method. 
 
-    def __init__(self):    
+    def __init__(self, config):
+        self.open_connection(config) 
+
+    def open_connection(self, config):
         self.cnx = mysql.connector.connect(**config)
         self.cursor = self.cnx.cursor()
-    
+
     def query(self, query_input):
         self.cursor.execute(query_input)
         df = pd.DataFrame(self.cursor.fetchall())
@@ -36,7 +39,6 @@ class etl:
 
     def col_rename(self):
         dict_name = {}
-        type(dict_name)
         for key, value in zip(self.df_questions["id"], self.df_questions["question"]):
             dict_name.update({key : value})
 

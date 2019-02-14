@@ -1,9 +1,9 @@
-from private import query_user_background, query_pretest_results, query_questions
+from private import query_user_background, query_pretest_results, query_questions, config
 from functions import etl
 
 # Exrtact Data
 
-etl = etl()
+etl = etl(config)
 
 df_user = etl.query(query_user_background)
 df_pre_test = etl.query(query_pretest_results)
