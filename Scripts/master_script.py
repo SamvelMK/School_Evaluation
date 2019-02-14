@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, "C:/Users/mkhit/Desktop/UNFPA_2019/Private/")
+
 from private import query_user_background, query_pretest_results, query_questions, config
 from functions import etl
 
