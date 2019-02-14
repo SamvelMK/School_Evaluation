@@ -19,14 +19,18 @@ class etl:
         self.open_connection(config) 
 
     def open_connection(self, config):
+        print("Opened connection to the database.")
         self.cnx = mysql.connector.connect(**config)
         self.cursor = self.cnx.cursor()
 
     def query(self, query_input):
+        # self.cursor.execute(query_input)
+        # df = pd.DataFrame(self.cursor.fetchall())
+        # df.columns = self.cursor.column_names
+        # return df
         self.cursor.execute(query_input)
-        df = pd.DataFrame(self.cursor.fetchall())
-        df.columns = self.cursor.column_names
-        return df
+        return self.cursor
+
 
     def long_wide(self, df_test_res, df_questions):
         self.df_questions = df_questions
