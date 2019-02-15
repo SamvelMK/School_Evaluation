@@ -1,11 +1,8 @@
 import mysql.connector
- 
-# Functions and Methods
 
 class extractor:
 
-        """ Class to create a connection with SQL database and run queries""" 
-
+    """ Class to create a connection with SQL database and run queries""" 
     def __init__(self, config):
         self.open_connection(config) 
 

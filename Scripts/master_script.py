@@ -2,24 +2,18 @@ import sys
 sys.path.insert(0, "C:/Users/mkhit/Desktop/UNFPA_2019/Private/")
 
 from private import query_user_background, query_pretest_results, query_questions, config
-from functions import etl
-from datahandler import DataHandler
+from extract import extractor
+from transform import DataTransform
 
-# Exrtact Data
+# Extract, Transform, Load (ETL)
 
 if __name__ == '__main__':
-    # etl = etl(config)
-
-    # df_user = etl.query(query_user_background)
-    # df_pre_test = etl.query(query_pretest_results)
-    # df_questions = etl.query(query_questions)
-
-    # # Transform Data
-    # data = etl.long_wide(df_pre_test, df_questions).col_rename()
-
-    # Load Data
-
-    # print(data)
-
-    handler = DataHandler(etl(config))
+    
+    etl = DataTransform(extractor(config))
+    
+    # handler.create_dataframe(query_user_background)
+    etl.create_dataframe("results", query_pretest_results)
+    etl.create_dataframe("questions", query_questions)
+    
+    result = etl.get_transformed("results", "questions")
     

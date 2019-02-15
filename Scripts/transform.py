@@ -1,11 +1,11 @@
 import pandas as pd
 import numpy as np
 
-class data_transform:
+class DataTransform:
     """Class to handle construction of data frames from mysql and data transformation."""
 
     def __init__(self, extract):
-        self.extract = extractor
+        self.extract = extract
         self.dfs = {}
     
     def create_dataframe(self, name, query):
