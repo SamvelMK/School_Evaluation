@@ -16,6 +16,7 @@ TBA
 ## Authors
 
 * **Samvel Mkhitaryan, MPH, MS** - *Principal Investigator* - [GitHub](https://github.com/SamvelMK)
+* **Ruud Luijkx, PhD** - *Statistical Advisor*
 * **Anush Alexanyan, MA** - *National expert*
 * **Contracting Party** - *UNFPA Armenia CO* - [UNFPA Armenia](https://armenia.unfpa.org/)
 
