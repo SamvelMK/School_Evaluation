@@ -1,5 +1,6 @@
 config.py
-/Data/
-/__pycache__/
 /Report/
+/Scripts/Data/
 /Scripts/final_scripts/
+/__pycache__/
+
