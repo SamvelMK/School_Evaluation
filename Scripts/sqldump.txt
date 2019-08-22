@@ -1,1 +1,0 @@
-mysqldump -u eworks_unfpa -h 192.185.93.250 -p eworks_unfpa > ~/backup_DB/unfpa_backup.sql --skip-extended-insert

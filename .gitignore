@@ -1,1 +1,5 @@
-/Private/*
+config.py
+/Data/
+/__pycache__/
+/Report/
+/Scripts/final_scripts/

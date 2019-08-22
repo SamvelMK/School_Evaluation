@@ -1,0 +1,30 @@
+ 
+        
+        ************************************************************************************************
+        ****                                Test INFO                                               ****
+        ************************************************************************************************
+        **** Data acquisition date: August 21, 2019                                                 ****
+        **** Overall results:                                                                       ****
+        ****                                                                                        ****
+        **** 	 Number of overall test takers: 57                                                  ****
+        **** 	 Number of people who took only the pre test: 29                                    ****
+        **** 	 Numbr of students who completed both the pre and the post tests: 28                ****
+        ****                                                                                        ****
+        **** Pre Test:                                                                              ****
+        ****                                                                                        ****
+        **** 	 Proportion of correct answers: 49.63%                                              ****
+        **** 	 Proportion of overall correct answers on knwoledge questions per sex:              **** 
+        **** 	 Female: 81.28%                                                                     ****
+        **** 	 Male: 80.28%                                                                       ****
+        ****                                                                                        ****
+        **** Post Test :                                                                            ****
+        ****                                                                                        ****
+        **** 	 Proportion of correct answers: 51.21%                                              ****
+        **** 	 Proportion of overall correct answers on knwoledge questions per sex:              ****
+        **** 	 Female: 84.17%                                                                     ****
+        **** 	 Male: 84.4%                                                                       ****
+        ************************************************************************************************
+        **** Note: The number of pre and post test takers may differ.                               ****
+        ************************************************************************************************
+        
+        
