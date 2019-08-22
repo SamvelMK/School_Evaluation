@@ -1,4 +1,6 @@
 config.py
+*.docx
+*.xlsx
 Report/
 /Scripts/Data/
 /Scripts/final_scripts/
