@@ -14,18 +14,23 @@ from tables import User
 
 
 class UserData(Connection):
+
+    """ 
+    Class to handle user data.
+    To initialize the class, you need to pass on the SQLdb connection string, region names dictionary
+    and specify whether the it is a trial or not.
+    The region names dictionary includes the region names that will be reassigned to the dataframes (because the 
+    region names in the original db is in Armenian alphabet).
+    The trial argument specifies whether the preprocessing is for the trial period. If true then the dates of the
+    trial will be used for data query, otherwise the current date -1 will be selected.  
+    """
+
     def __init__(self, connection_string, region_names, trial = None):
 
                 
         # First we create a session with the DB.
         self.session = Connection.connection(connection_string)
         self.region_names = region_names
-
-        """ 
-            If the trial argument is set to be True then the databased is queried with the dates of the trial of the e-learning module. 
-            Otherwise, the start date of the date filter is set on the current date (i.e., the date of the query) and the end date is set
-            to -1 years. 
-        """
         
         # Because the created_at column in the User table is in UNIX epoch format we need to convert the UTC
         # time format to UNIX epoch time format before sending the query.
@@ -58,8 +63,12 @@ class UserData(Connection):
         self.user_table['region_name'] = self.user_table['user_region'].apply(lambda x: self.region_names[x])
 
     def user_info(self):
+
+        """ 
+        User information method prepares a string with user information. E.g. number of regions the users come from. 
+        """
         
-        # Note: The number of registered users (unless otherwise specified) reflect the total number of registered users regardless of their
+        # Note: The number of registered users (unless otherwise specified) reflects the total number of registered users regardless of their
         # status of completion of the course.
         
         region = len(self.user_table['user_region'].unique())
@@ -104,9 +113,13 @@ class UserData(Connection):
         
         return self.info
 
-    def user_aggr(self, group_by, index_name):
+    def user_aggr(self, group_by):
 
-        """ This function creates aggregates (counts) of a passed dataframe."""
+        """ 
+        This function creates aggregates (counts) of a passed dataframe.
+        The group_by argument specifies the variables the df should be aggregated on.
+        """
+
         students = self.user_table[['user_id'] + group_by].groupby([i for i in group_by]).nunique().T
         schools = self.user_table[['user_school'] + group_by].groupby([i for i in group_by]).nunique().T
         communities = self.user_table[['user_community'] + group_by].groupby([i for i in group_by]).nunique().T
@@ -127,15 +140,21 @@ class UserData(Connection):
         return user_results
       
     def user_aggregate_grade(self):
-        self.user_aggr_grade = self.user_aggr(['user_grade'], ['Grade'])
+        self.user_aggr_grade = self.user_aggr(['user_grade'])
 
     def user_aggregate_grade_region(self):
-        self.user_aggr_grade_region = self.user_aggr(['user_grade', 'region_name'], ['Region'])
+        self.user_aggr_grade_region = self.user_aggr(['user_grade', 'region_name'])
     
     @staticmethod
     def write_to_csv(directory, trial = None, **kwargs):
         
-        """ Requires specification of the current directoy. That's where the directory Data will be created"""
+        """ 
+        The write_to_csv method writes out the specified dataframe to a csv file.
+        Requires specification of the name of the directory. That's the directory that 
+        shall be created inside the Data directory. Trial argument specifies whether the trial dates shall be used. If
+        true than the trial dates are selected; otherwise the current date -1 is selected. The kwargs is a dictionary that takes
+        the dataframe_name as a key and dataframe as the value. 
+        """
         
         current_dir = os.getcwd()
 
@@ -165,6 +184,13 @@ class UserData(Connection):
     
     @staticmethod    
     def write_info(directory, message, trial = None):
+
+        """ 
+        Write_info method writes out the info.txt file. This method requires the name of the directory where the info file is
+        going to be written in. The trial argument is used for selecting the dates. If true then the dates of the trial will be
+        selected; otherwise the current date -1 will be selected.
+        """
+
         current_dir = os.getcwd()
 
         if trial:
