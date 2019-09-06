@@ -21,8 +21,7 @@ from tables import User, Tests, TestsQuestions, Formative, FormativeQuestions
 class ProcessEvaluationData(TestData):
 
     """ 
-        DOC STRING
-
+    A class to handle process evaluation data. To initialize the class you need to specify the SQL connection String.
     """
 
 
@@ -44,9 +43,11 @@ class ProcessEvaluationData(TestData):
     
     def read_files(self, **kwargs):
 
-        """ This function goes through the specified directories and reades files into a temporary dictionary called
+        """ 
+        This function goes through the specified directories and reades files into a temporary dictionary called
         temp_data. The data is read as dataframe and stored with a key as the name of the file (e.g., user_2019). 
-        After reading in all the files the function changes the directory to the global one (the where it started from). """
+        After reading in all the files the function changes the directory to the global one (the where it started from). 
+        """
 
         self.temp_data = {}
 
@@ -67,12 +68,16 @@ class ProcessEvaluationData(TestData):
             os.chdir(current_dir)
                 
     def transitions_global(self, trial = None):
+        """
+        The method is designed for calculating transition statistics. The function has two modes: Trial = True/False.
+        When the trial is True then the it takes searches for directories with the trial date (2019). Otherwise the function 
+        takes the past year (current year - 1).    
+        """
 
         def tranistions_grouped(group_by):
-
-            """" The method is designed for calculating transition statistics. The function has two modes: Trial = True/False.
-            When the trial is True then the it takes searches for directories with the trial date (2019). Otherwise the function 
-            takes the past year (current year - 1). """
+            """ 
+            The group_by argument needs to be specified to show on which variable/s the aggrigation shall be implemented on. 
+            """
 
             if trial:
                 year = 2019
@@ -81,9 +86,9 @@ class ProcessEvaluationData(TestData):
                 year = now.year - 1
             
             self.year = year
-            self.global_step_one = {}
-            self.global_step_two = {}
-            self.global_step_three = {}
+            self.global_step_one = {} # Step 1: Registration
+            self.global_step_two = {} # Step 2: Pre-test
+            self.global_step_three = {} # Step 3: Post-test
             
             self.read_files(**{'user' : self.year, 
                                 'eight' : self.year,
@@ -91,21 +96,23 @@ class ProcessEvaluationData(TestData):
                                 'ten' : self.year,
                                 'eleven' : self.year})
 
-            """ After reading in the files the method creates dictionaries for each step (3 dictionaries in total). """
+            """ 
+            After reading in the files the method creates dictionaries for each step (3 dictionaries in total).
+            """
 
             for i in self.temp_data.keys():
                 
-                if 'post' in i:
-                    
+                if 'post' in i: # assembles the post-test data
                     self.global_step_three[i]= pd.DataFrame(self.temp_data[i].drop_duplicates(['user_id'])\
                                                 .groupby([i for i in group_by])['user_id'].count())
                     self.global_step_two[i] = pd.DataFrame(self.temp_data[i].drop_duplicates(['user_id'])\
                                                 .groupby([i for i in group_by])['user_id'].count())
                     
-                elif 'dropouts' in i:
+                elif 'dropouts' in i: # adds droupouts data to step two.
                     self.global_step_two[i] = pd.DataFrame(self.temp_data[i].drop_duplicates(['user_id'])\
                                                 .groupby([i for i in group_by])['user_id'].count())
-                elif 'user' in i:
+
+                elif 'user' in i: # add user data to step one. 
                     self.global_step_one[i] = pd.DataFrame(self.temp_data[i]\
                                                             .groupby([i for i in group_by])['user_id'].count())
                 
@@ -113,7 +120,7 @@ class ProcessEvaluationData(TestData):
             df1 = pd.DataFrame(df1.sum(axis=1, skipna=True))
             df1.rename(columns={ 0 : 'Step_Three'}, inplace = True)
 
-            df2 = pd.concat(self.global_step_two.values(), axis = 1)
+            df2 = pd.concat(self.global_step_two.values(), axis = 1, sort=True)
             df2 = pd.DataFrame(df2.sum(axis=1, skipna=True))
             df2.rename(columns={ 0 : 'Step_Two'}, inplace = True)
 
@@ -121,10 +128,10 @@ class ProcessEvaluationData(TestData):
             df3 = pd.DataFrame(df3.sum(axis=1, skipna=True))
             df3.rename(columns={ 0 : 'Step_One'}, inplace = True)
 
-            transitions = pd.concat([df3, df2, df1], axis = 1)
+            transitions = pd.concat([df3, df2, df1], axis = 1, sort=True)
             transitions = transitions.T.assign(Total = lambda x: x.sum(1)).T
 
-            pc_change = transitions.pct_change(axis = 'columns').round(2)
+            pc_change = transitions.pct_change(axis = 'columns').round(2) # Calculates percentage change between the steps and rounds to the second digit.
             pc_change.rename(columns = {'Step_One' : 'Step_One',
                                         'Step_Two' : 'Step_Two',
                                         'Step_Three' : 'Step_Three',
@@ -132,11 +139,12 @@ class ProcessEvaluationData(TestData):
                                         'Step_Two' :  'Step_Two_change',
                                         'Step_Three' : 'Step_Three_change'}, inplace = True)
             
-            transitions_pc = pd.concat([transitions, pc_change], axis = 1)
+            transitions_pc = pd.concat([transitions, pc_change], axis = 1) 
             transitions_pc.drop('Step_One_change', axis = 1, inplace = True)
             return transitions_pc
 
         def transition_time(group_by):
+            
             pre_date = {}
             for i in self.temp_data.keys():
                 if 'pre' in i:

@@ -7,7 +7,7 @@ pip install -r requirements.txt --user
 cls
 ECHO Installation is complete.
 
-cd %CD%\final_scripts
+cd %CD%\Scripts
 ECHO Running the pipeline.
 
 python -B master_script.py 

@@ -3,6 +3,13 @@ from tasks import Task
 from datetime import datetime, time, date
 import os
 
+"""
+The present script implements the tasks specified in tasks.py file. In the future the tasks can be parallelized.
+After each task is implemented the script writes a log file with either a scucess status or with the failure and the error message.
+The log.txt file can be found in Data directory.
+"""
+
+
 if __name__ == '__main__':
 
     # A function to write a log file
